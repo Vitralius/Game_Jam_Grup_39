@@ -1,39 +1,51 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using TMPro;
 using Types;
 using Stats;
 using System.Linq;
 using UnityEngine.UI;
+using Enemies;
 
 public class Attributes : MonoBehaviour 
 {
-    private string Name = "Lorem Ipsum";
+    public string Name = "Lorem Ipsum";
     private readonly int maxHealth = 100;
+    [SerializeField]
     private int currentHealth = 100;
     public Slider healthBar; 
     private readonly int maxStamina = 80;
+    [SerializeField]
     private int currentStamina = 80;
     public Slider staminaBar; 
     private bool isDead = false;
     public int attackModifier = 10;
     public int defenceModifier = 10;
     public Dictionary<StatType, Stat> stats = _stats.stats;
-    private readonly int Limit = 100;
 
     #region Singleton
 
-	public static Attributes instance;
+    #endregion
 
-	void Awake()
-	{
-        instance = this;
-        StaminaBar(currentStamina);
-        HealthBar(currentHealth);
-	}
+    public Attributes(string name, int maxHealth, int currentHealth, int maxStamina, int currentStamina, int attackModifier, int defenceModifier)
+    {
 
-	#endregion
+        this.Name = name;
+        this.maxHealth = maxHealth;
+        this.currentHealth = currentHealth;
+        this.maxStamina = maxStamina;
+        this.currentStamina = currentStamina;
+        this.attackModifier = attackModifier;
+        this.defenceModifier = defenceModifier;
+    }
+    public void SetAttributes(Attributes attributes)
+    {
+        this.Name = attributes.Name;
+        this.currentHealth = attributes.currentHealth;
+        this.currentStamina = attributes.currentStamina;
+        this.attackModifier = attributes.attackModifier;
+        this.defenceModifier = attributes.defenceModifier;
+    }
     public void SetName(string name)
     {
         this.name = name;

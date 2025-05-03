@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using Types;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class AttributeManager : MonoBehaviour {
 
@@ -17,7 +14,7 @@ public class AttributeManager : MonoBehaviour {
  	void Awake ()
 	{
 		instance = this;
-        UpdateTexts();
+        // UpdateTexts();
 	}
 
 	#endregion
